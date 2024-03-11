@@ -21,75 +21,37 @@
 
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-file"></i>
+                <a href="manage_employees" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
                     <p>
-                        IMs
-                        <i class="fas fa-angle-left right"></i>
+                        Manage Accounts
                     </p>
                 </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="manage_batches" class="nav-link">
-                            <i class="fas fa-copy"></i>
-                            <p>Batches</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="manage_masterlist" class="nav-link">
-                            <i class="fas fa-book"></i>
-                            <p>Masterlist</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-users"></i>
-                            <p>Authors</p>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a href="manage_categories" class="nav-link">
-                            <i class="fas fa-table"></i>
-                            <p>Categories</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-shopping-cart"></i>
+                <a href="manage_employees" class="nav-link">
+                <i class="nav-icon far fa-comments"></i>
                     <p>
-                        Sales Management
-                        <i class="fas fa-angle-left right"></i>
+                        Announcements
                     </p>
                 </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-tag"></i>
-                            <p>New Purchase</p>
-                        </a>
-                    </li>
+            </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-chart-pie mr-1"></i>
-                            <p>Generate Reports</p>
-                        </a>
-                    </li>
-                </ul>
+            <li class="nav-item">
+                <a href="manage_employees" class="nav-link">
+                <i class="nav-icon fas fa-envelope mr-2"></i>
+                    <p>
+                        Send Notification
+                    </p>
+                </a>
             </li>
 
             <li class="nav-item">
                 <a href="manage_employees" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        Employee Accounts
+                        Admin Accounts  
                     </p>
                 </a>
             </li>
