@@ -37,3 +37,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::view('/sample', 'sample.sample');
+
+Route::get('/manage_account', function () {
+    return view('admin_dashboard.manage_acc');
+})->name('admin.dashboard.manage_account')->middleware(['auth','admin']);
+
+Route::get('/manage_admin_account', function () {
+    return view('admin_dashboard.manage_admin_acc');
+})->name('admin.dashboard.manage_admin_account')->middleware(['auth','admin']);
+

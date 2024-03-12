@@ -31,6 +31,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="admin/dist/css/adminlte.min.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -48,27 +50,104 @@
                 <!-- form start -->
                 <form>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="first_name">First Name</label>
+                                <input type="name" class="form-control" id="first_name" placeholder="Enter First Name">
+                            </div>
+                            <div class="col-4">
+                                <label for="middle_name">Middle Name</label>
+                                <input type="name" class="form-control" id="middle_name"
+                                    placeholder="Enter Middle Name">
+                            </div>
+                            <div class="col-4">
+                                <label for="last_name">Last Name</label>
+                                <input type="name" class="form-control" id="last_name" placeholder="Enter Last Name">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password">
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="id_number">ID Number</label>
+                                <input type="id_number" class="form-control" id="id_number"
+                                    placeholder="Enter ID Number">
+                            </div>
+                            <div class="col-4">
+                                <label>College</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>California</option>
+                                    <option>Delaware</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Washington</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label>Gender</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
                         </div>
+                        <!-- END FIRST PART -->
+                        <!-- start second Part -->
+                        <hr style="border: 1px solid #808080;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    placeholder="Enter email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Enter Password">
+                            </div>
+                            <div class="col-6">
+                                <label for="password">Re-enter Password</label>
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Enter Password">
+                            </div>
+                        </div>
+                        <!-- end second part -->
                     </div>
                     <!-- /.card-body -->
-
-                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            <div>
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                    <label for="agreeTerms">
+                                        I agree to the <a href="#">terms</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
                     </div>
+                    <br>
                 </form>
             </div>
             <!-- /.card -->
         </div>
     </section>
     <!-- /.card -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- AdminLTE App -->
 
