@@ -27,7 +27,7 @@ route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth
 
 route::get('post', [DashboardController::class,'post'])->middleware(['auth','admin']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth',)->group(function () {
     Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
@@ -45,4 +45,8 @@ Route::get('/manage_account', function () {
 Route::get('/manage_admin_account', function () {
     return view('admin_dashboard.manage_admin_acc');
 })->name('admin.dashboard.manage_admin_account')->middleware(['auth','admin']);
+
+Route::get('/send_sms', function () {
+    return view('admin_dashboard.send_sms');
+})->name('admin.dashboard.send_sms')->middleware(['auth','admin']);
 

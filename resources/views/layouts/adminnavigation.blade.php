@@ -21,7 +21,7 @@
 
 
             <li class="nav-item">
-                <a href="manage_employees" class="nav-link">
+                <a href="manage_account" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Manage Accounts
@@ -31,15 +31,15 @@
 
             <li class="nav-item">
                 <a href="manage_employees" class="nav-link">
-                <i class="nav-icon far fa-comments"></i>
+                <i class="nav-icon far fa-bell"></i>
                     <p>
-                        Announcements
+                        Events
                     </p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="manage_employees" class="nav-link">
+                <a href="send_sms" class="nav-link">
                 <i class="nav-icon fas fa-envelope mr-2"></i>
                     <p>
                         Send Notification
@@ -48,7 +48,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="manage_employees" class="nav-link">
+                <a href="manage_admin_account" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Admin Accounts  
