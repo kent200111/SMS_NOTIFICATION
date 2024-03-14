@@ -139,7 +139,14 @@
                 <span class="brand-text font-weight-light" style="text-align:center;color:white;">SSC l CMU</span>
             </a>
 
-            @include('layouts.navigation')
+            @if(Auth::check())
+                @if(Auth::user()->usertype == 'admin')
+                    @include('layouts.adminnavigation')
+                @elseif(Auth::user()->usertype == 'user')
+                    @include('layouts.navigation')
+                @endif
+            @endif
+
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
