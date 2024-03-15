@@ -55,6 +55,10 @@ Route::get('/calendar', function () {
     return view('admin_dashboard.calendar');
 })->name('admin.dashboard.calendar')->middleware(['auth','admin']);
 
+Route::get('/post', function () {
+    return view('admin_dashboard.post');
+})->name('admin.dashboard.post')->middleware(['auth','admin']);
+
 
 Route::get('/getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
 Route::post('/createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
