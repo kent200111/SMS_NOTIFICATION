@@ -48,6 +48,9 @@
     <link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+    <!-- fullCalendar -->
+  <link rel="stylesheet" href="admin/plugins/fullcalendar/main.css">
+
 
 
     @yield('styles')
