@@ -1,0 +1,111 @@
+/* Existing CSS styles... */
+
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    right: 90px;
+    bottom: 40px;
+    width: 325px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    z-index: 1001;
+    transition: transform 0.3s ease, right 0.4s ease, background-color 0.3s ease, opacity 0.5s ease;
+}
+
+.chatbot-container.active {
+    opacity: 1;
+}
+/* Chatbot Input Container */
+.chatbot-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Border to match input style */
+    border-radius: 4px; /* Rounded corners */
+}
+
+#chatbotInput {
+    flex-grow: 1;
+    border: 2px solid rgb(64, 61, 61); /* Remove border from input */
+    margin-top: 10px;
+    padding: 10px;
+    padding-right: 35px;
+    border-radius: 4px; /* Match container's border-radius */
+    outline: black; /* Remove focus outline */
+    width: calc(100% - 45px);
+}
+
+.chatbot-send-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #50b3a2;
+    cursor: pointer;
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-send-icon:hover {
+    color: #347f6c; /* Darker shade for hover effect */
+    transform: scale(1.2);
+}
+
+.chatbot-messages {
+    height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+}
+
+.chatbot-icon {
+    position: fixed;
+    right: 20px;
+    bottom: 20px; /* Adjust based on the chatbot container's height */
+    background-color: #50b3a2;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, right 0.4s ease, background-color 0.3s ease;
+    z-index: 1002;
+    font-size: 25px;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1); /* Scale up icon on hover */
+}
+
+/* Adjust position when sidebar is active */
+.sidebar.active ~ .chatbot-container,
+.sidebar.active ~ .chatbot-icon {
+    right: 335px; /* Adjust based on sidebar width */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chatbot-container {
+        width: calc(100% - 40px); /* Full width minus some margin */
+        bottom: 70px; /* Adjust for smaller screens */
+    }
+
+    .chatbot-icon {
+        bottom: 70px;
+    }
+
+    /* Adjust when sidebar is active on smaller screens */
+    .sidebar.active ~ .chatbot-container,
+    .sidebar.active ~ .chatbot-icon {
+        right: 20px; /* Sidebar takes full width on small screens */
+    }
+}

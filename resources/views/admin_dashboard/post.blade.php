@@ -24,11 +24,11 @@
                                     <img class="img-circle img-bordered-sm" src="admin/dist/img/user6-128x128.jpg"
                                         alt="User Image">
                                     <span class="username">
-                                        <a href="#">Sepreme Student Council</a>
-                                        
+                                        <a href="#">Supreme Student Council</a>
+
                                     </span>
                                     <br>
-                                    
+
                                     <p>
                                         Caption Here!!
                                     </p>
@@ -77,5 +77,58 @@
         </div>
     </div>
 </section>
+<!-- ChatBoT -->
+<div class="chatbot-icon" onclick="toggleChatbot()">
+    <i class="fas fa-robot"></i> <!-- Chatbot icon -->
+</div>
+
+<!-- Chatbot Interface -->
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <h2>Chatbot</h2>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <i class="fas fa-paper-plane chatbot-send-icon" onclick="sendMessageByIcon()"></i>
+    <input type="text" id="chatbotInput" placeholder="Type a message..." onkeypress="sendMessage(event)">
+</div>
+<script>
+function sendMessageByIcon() {
+    var message = document.getElementById('chatbotInput').value;
+    if (message.trim() === '') return;
+
+    document.getElementById('chatbotMessages').innerHTML += `<div>You: ${message}</div>`;
+
+    $.ajax({
+        url: '/chatbot/respond',
+        type: 'POST',
+        data: {
+            userQuestion: message,
+            _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+            document.getElementById('chatbotMessages').innerHTML += `<div>Bot: ${response.answer}</div>`;
+        },
+        error: function() {
+            document.getElementById('chatbotMessages').innerHTML +=
+                `<div>Bot: Sorry, I can't respond right now.</div>`;
+        }
+    });
+
+    document.getElementById('chatbotInput').value = '';
+}
+
+function sendMessage(event) {
+    if (event.key === "Enter") {
+        sendMessageByIcon();
+    }
+}
+
+function bringPostToFront() {
+    var postContainer = document.getElementById("mainContent");
+    postContainer.classList.toggle("post-container-front");
+}
+
+document.getElementById("mainContent").addEventListener("click", bringPostToFront);
+</script>
 
 @endsection

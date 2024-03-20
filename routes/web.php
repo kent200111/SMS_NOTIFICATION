@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\http\Controllers\DashboardController;
 use App\http\Controllers\FullCalendarController;
+use App\Http\Controllers\ChatBotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 
 route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth')->name('dashboard');
 
-route::get('post', [DashboardController::class,'post'])->middleware(['auth','admin']);
 
 Route::middleware('auth',)->group(function () {
     Route::view('about', 'about')->name('about');
@@ -59,7 +59,14 @@ Route::get('/post', function () {
     return view('admin_dashboard.post');
 })->name('admin.dashboard.post')->middleware(['auth','admin']);
 
-
 Route::get('/getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
 Route::post('/createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
 Route::post('/deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
+
+Route::post('/chatbot/get-response', [ChatBotController::class, 'getResponse']);
+Route::post('/chatbot/respond', [ChatBotController::class, 'respond']);
+
+Route::resource("/chatbot",ChatBotController::class);
+
+
+

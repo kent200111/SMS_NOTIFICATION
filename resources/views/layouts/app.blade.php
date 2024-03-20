@@ -49,7 +49,9 @@
     <link rel="stylesheet" href="admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <!-- fullCalendar -->
-  <link rel="stylesheet" href="admin/plugins/fullcalendar/main.css">
+    <link rel="stylesheet" href="admin/plugins/fullcalendar/main.css">
+
+    <link rel="stylesheet" href="{{ asset('cssfile/chatbot.css') }}">
 
 
 
@@ -107,6 +109,14 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="getevent" target="_blank"> Events </a>
+                </li>
+
+
             </ul>
 
             <!-- Right navbar links -->
@@ -143,11 +153,11 @@
             </a>
 
             @if(Auth::check())
-                @if(Auth::user()->usertype == 'admin')
-                    @include('layouts.adminnavigation')
-                @elseif(Auth::user()->usertype == 'user')
-                    @include('layouts.navigation')
-                @endif
+            @if(Auth::user()->usertype == 'admin')
+            @include('layouts.adminnavigation')
+            @elseif(Auth::user()->usertype == 'user')
+            @include('layouts.navigation')
+            @endif
             @endif
 
         </aside>
@@ -252,6 +262,7 @@
     <script src="admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ asset('javascriptfile/chatbot.js') }}"></script>
 
     <script>
     $(function() {
