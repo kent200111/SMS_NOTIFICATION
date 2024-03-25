@@ -6,6 +6,7 @@ use App\http\Controllers\DashboardController;
 use App\http\Controllers\FullCalendarController;
 use App\Http\Controllers\ChatBotController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,7 +67,9 @@ Route::post('/deleteevent', [FullCalendarController::class, 'deleteEvent'])->nam
 Route::post('/chatbot/get-response', [ChatBotController::class, 'getResponse']);
 Route::post('/chatbot/respond', [ChatBotController::class, 'respond']);
 
+// Chatbot
 Route::resource("/chatbot",ChatBotController::class);
-
-
-
+Route::post('chatbot/{id}/update', 'ChatBotController@update')->name('chatbot.update');
+Route::post('chatbot/{id}/update', [ChatBotController::class, 'update'])->name('chatbot.update');
+Route::delete('chatbot/{id}', 'ChatBotController@destroy')->name('chatbot.destroy');
+Route::get('/edit/{id}', [ChatBotController::class, 'edit'])->name('chatbot.edit');

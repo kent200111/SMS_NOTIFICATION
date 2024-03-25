@@ -7,9 +7,10 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index()
-    {
-        $users = User::paginate();
+{
+    $users = User::where('usertype', 'user')->paginate();
 
-        return view('users.index', compact('users'));
-    }
+    return view('users.index', compact('users'));
+}
+
 }
