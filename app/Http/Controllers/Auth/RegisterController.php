@@ -3,34 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -41,33 +19,41 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+        return view('auth.register');
+    }
+    public function register(Request $request)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'id_number' => ['required', 'string', 'max:255'],
+            'college' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'in:Male,Female'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact_number' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        // Create a new User instance
+        $user = new User();
+        $user->first_name = $validatedData['first_name'];
+        $user->middle_name = $validatedData['middle_name'];
+        $user->last_name = $validatedData['last_name'];
+        $user->id_number = $validatedData['id_number'];
+        $user->college = $validatedData['college'];
+        $user->gender = $validatedData['gender'];
+        $user->email = $validatedData['email'];
+        $user->contact_number = $validatedData['contact_number'];
+        $user->password = Hash::make($validatedData['password']);
+
+        // Save the user to the database
+        $user->save();
+
+        // You can customize the redirect path or response as needed
+        return redirect()->route('home')->with('success', 'Registration successful. Please log in.');
     }
 }

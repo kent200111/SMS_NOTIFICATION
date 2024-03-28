@@ -5,7 +5,7 @@
         <div class="info">
             <a href="{{ route('profile.show') }}" class="d-block">
                 <i class="fas fa-user"></i>
-                {{ Auth::user()->name }}
+                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
             </a>
         </div>
     </div>
@@ -24,10 +24,10 @@
 
 
             <li class="nav-item">
-                <a href="manage_account" class="nav-link">
+                <a href="users" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        Manage Accounts
+                        Accounts List
                     </p>
                 </a>
             </li>

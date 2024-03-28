@@ -73,3 +73,8 @@ Route::post('chatbot/{id}/update', 'ChatBotController@update')->name('chatbot.up
 Route::post('chatbot/{id}/update', [ChatBotController::class, 'update'])->name('chatbot.update');
 Route::delete('chatbot/{id}', 'ChatBotController@destroy')->name('chatbot.destroy');
 Route::get('/edit/{id}', [ChatBotController::class, 'edit'])->name('chatbot.edit');
+
+Route::group(['middleware' => 'web'], function () {
+    Auth::routes();
+});
+

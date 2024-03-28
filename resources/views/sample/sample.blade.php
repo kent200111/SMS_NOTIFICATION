@@ -48,7 +48,8 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4">
@@ -111,13 +112,11 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password"
-                                    placeholder="Enter Password">
+                                <input type="password" class="form-control" id="password" placeholder="Enter Password">
                             </div>
                             <div class="col-6">
                                 <label for="password">Re-enter Password</label>
-                                <input type="password" class="form-control" id="password"
-                                    placeholder="Enter Password">
+                                <input type="password" class="form-control" id="password" placeholder="Enter Password">
                             </div>
                         </div>
                         <!-- end second part -->
