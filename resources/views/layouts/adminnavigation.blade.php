@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="manage_admin_account" class="nav-link">
+                <a href="admins" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Admin Accounts

@@ -41,7 +41,6 @@
 
     <section class="content">
         <div class="container-fluid" style="width: 800px;">
-
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Quick Example</h3>
