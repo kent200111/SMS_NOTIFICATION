@@ -37,8 +37,8 @@
                                             onclick="editModal('{{ $item->id }}', '{{ $item->question }}', '{{ $item->answer }}')"
                                             data-toggle="modal" data-target="#modal-lg2"></i>
 
-                                            <i class="fas fa-trash" style="color:red; font-size: 24px; cursor: pointer;"
-                                                onclick="confirmDelete('{{ $item->id }}')"></i>
+                                        <i class="fas fa-trash" style="color:red; font-size: 24px; cursor: pointer;"
+                                            onclick="confirmDelete('{{ $item->id }}')"></i>
 
                                         <!-- Hidden form for delete action -->
                                         <form id="deleteForm"

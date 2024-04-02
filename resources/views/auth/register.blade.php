@@ -42,8 +42,8 @@
     <section class="content">
         <div class="container-fluid" style="width: 800px;">
             <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Quick Example</h3>
+                <div class="card-header" style="background-color: #00491e;">
+                    <h3 class="card-title">Register</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -144,7 +144,7 @@
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <button type="submit" class="btn btn-primary btn-block" style="background-color: #00491e;">Register</button>
                             </div>
                             <!-- /.col -->
                         </div>

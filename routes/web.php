@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\DashboardController;
 use App\http\Controllers\FullCalendarController;
 use App\Http\Controllers\ChatBotController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
 
 
 /*
@@ -79,4 +79,8 @@ Route::group(['middleware' => 'web'], function () {
     Auth::routes();
 });
 
-Route::delete('/users/{id}', 'App\Http\Controllers\UserController@destroy')->name('users.destroy');
+Route::delete('/adminusers/{id}', [AdminUserController::class, 'destroy'])->name('adminusers.destroy');
+Route::resource("/admins",AdminUserController::class);
+Route::get('/admins', [AdminUserController::class, 'index'])->name('admin.index');
+
+

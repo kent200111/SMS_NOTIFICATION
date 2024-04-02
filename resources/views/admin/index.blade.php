@@ -3,9 +3,43 @@
 @section('content')
 <br>
 
+<head>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="admin/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="admin/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="admin/plugins/dropzone/min/dropzone.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+</head>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-xl">
+            Add Admin Account
+        </button>
+        <br> <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -25,25 +59,25 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            @foreach($adminusers as $adminuser)
+                            <tr>
+                                <td>{{ $adminuser->first_name }} {{ $adminuser->middle_name }} {{ $adminuser->last_name }}</td>
+                                <td>{{ $adminuser->id_number }}</td>
+                                <td>{{ $adminuser->college }}</td>
+                                <td>{{ $adminuser->gender }}</td>
+                                <td>{{ $adminuser->contact_number }}</td>
+                                <td style="text-align: center;">
+                                    <i class="fas fa-trash" style="color:red; font-size: 24px; cursor: pointer;"
+                                        onclick="confirmDelete('{{ $adminuser->id }}')"></i>
+                                    <form id="deleteForm" action="{{ route('adminusers.destroy', ['id' => $adminuser->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
                             <tbody>
-                                @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</td>
-                                    <td>{{ $user->id_number }}</td>
-                                    <td>{{ $user->college }}</td>
-                                    <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->contact_number }}</td>
-                                    <td style="text-align: center;">
-                                        <i class="fas fa-trash" style="color:red; font-size: 24px; cursor: pointer;"
-                                            onclick="confirmDelete('{{ $user->id }}')"></i>
-                                        <form id="deleteForm"
-                                            action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -53,6 +87,143 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog" style="max-width: 62%;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <section class="content">
+                        <div class="container-fluid" style="width: 800px;">
+
+                            <div class="card card-primary">
+                                <div class="card-header" style="background-color: #00491e;">
+                                    <h3 class="card-title">Add Admin Account</h3>
+                                </div>
+
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form action="{{ url('admins') }}" method="post">
+                                    {!! csrf_field() !!}
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label for="first_name">First Name</label>
+                                                <input type="text" class="form-control" id="first_name"
+                                                    name="first_name" placeholder="Enter First Name">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="middle_name">Middle Name</label>
+                                                <input type="text" class="form-control" id="middle_name"
+                                                    name="middle_name" placeholder="Enter Middle Name">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="last_name">Last Name</label>
+                                                <input type="text" class="form-control" id="last_name" name="last_name"
+                                                    placeholder="Enter Last Name">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label for="id_number">ID Number</label>
+                                                <input type="text" class="form-control" id="id_number" name="id_number"
+                                                    placeholder="Enter ID Number">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="college">College</label>
+                                                <select class="form-control select2" name="college"
+                                                    style="width: 100%;">
+                                                    <option value="" selected disabled>Select College</option>
+                                                    <option>College of Agriculture</option>
+                                                    <option>College of Arts and Sciences</option>
+                                                    <option>College of Business Management</option>
+                                                    <option>College of Education</option>
+                                                    <option>College of Engineering</option>
+                                                    <option>College of Forestry and Environmental Science</option>
+                                                    <option>College of Human Ecology</option>
+                                                    <option>College of Information Science and Computing</option>
+                                                    <option>College of Nursing</option>
+                                                    <option>College of Veterinary Medicine</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="gender">Gender</label>
+                                                <select class="form-control select2" name="gender" style="width: 100%;">
+                                                    <option value="" selected disabled>Select Gender</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- END FIRST PART -->
+                                        <!-- start second Part -->
+                                        <hr style="border: 1px solid #808080;">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                                    name="email" placeholder="Enter email">
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="contact_number">Contact Number</label>
+                                                <input type="tel" class="form-control" id="contact_number"
+                                                    name="contact_number" placeholder="Enter Contact Number">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="password">Password</label>
+                                                <input type="password" name="password"
+                                                    class="form-control @error('password') is-invalid @enderror"
+                                                    placeholder="{{ __('Password') }}" required
+                                                    autocomplete="new-password">
+                                                @error('password')
+                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="password_confirmation">Confirm Password</label>
+                                                <input type="password" name="password_confirmation" class="form-control"
+                                                    placeholder="{{ __('Confirm Password') }}" required
+                                                    autocomplete="new-password">
+                                            </div>
+                                        </div>
+                                        <!-- end second part -->
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="container">
+                                        <div class="row justify-content-end">
+                                            <!-- /.col -->
+                                            <div class="col-4">
+                                                <select class="form-control select2" name="usertype"
+                                                    style="width: 100%;" required>
+                                                    <option value="" selected disabled>Select User Type</option>
+                                                    <option>admin</option>
+                                                    <option>user</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <button type="submit" class="btn btn-primary btn-block"
+                                                    style="background-color: #00491e">Add Account</button>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </div>
+                                    <br>
+                                </form>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </section>
 
 <script>
