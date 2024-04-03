@@ -6,6 +6,7 @@ use App\http\Controllers\DashboardController;
 use App\http\Controllers\FullCalendarController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -79,8 +80,12 @@ Route::group(['middleware' => 'web'], function () {
     Auth::routes();
 });
 
+// admin
 Route::delete('/adminusers/{id}', [AdminUserController::class, 'destroy'])->name('adminusers.destroy');
 Route::resource("/admins",AdminUserController::class);
 Route::get('/admins', [AdminUserController::class, 'index'])->name('admin.index');
 
 
+// post
+Route::resource("/post", PostController::class);
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

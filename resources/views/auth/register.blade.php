@@ -137,7 +137,7 @@
                     <div class="container">
                         <div class="row justify-content-end">
                             <div class="col-4">
-                                <div class="icheck-primary">
+                                <div class="icheck-primary" required>
                                     <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                                     <label for="agreeTerms">I agree to the <a href="#">terms</a></label>
                                 </div>

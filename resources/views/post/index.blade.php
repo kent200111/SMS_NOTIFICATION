@@ -78,22 +78,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('chatbot') }}" method="post">
+                <form action="{{ url('posts')}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <label>Caption</label><br>
                     <input type="text" name="caption" id="caption" class="form-control"><br>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                    </div>
+
+                    <label>Photo</label><br>
+                    <input type="file" name="photo" id="photo" class="form-control"><br>
+                    
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
