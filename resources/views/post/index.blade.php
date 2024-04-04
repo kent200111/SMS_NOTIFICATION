@@ -20,41 +20,42 @@
                         <div class="active tab-pane" id="activity">
                             <!-- Post -->
                             <div class="post">
+                                @foreach($posts->reverse() as $item)
                                 <div class="user-block">
                                     <img class="img-circle img-bordered-sm" src="admin/dist/img/user6-128x128.jpg"
                                         alt="User Image">
                                     <span class="username">
-                                        <a href="#">Supreme Student Council</a>
+                                        <a href="#">Supreme Student Council
+                                            <span style="color: gray; font-size: 12px;">
+                                                Posted on {{ $item->created_at->format('F j, Y') }}
+                                            </span>
+                                        </a>
+                                        <form action="{{route('posts.destroy',$item->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <div class="text-right">
+                                                <!-- Align content to the right -->
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="confirmDelete()">Delete</button>
+                                            </div>
+                                        </form>
                                     </span>
-                                    <br>
-                                    <p>
-                                        Caption Here!!
-                                    </p>
+                                    <p>{{$item->caption}}</p>
                                 </div>
                                 <!-- /.user-block -->
                                 <div class="row col-md-12">
                                     <div class="col-md-12">
-                                        <img class="img-fluid" src="admin/dist/img/photo1.png" alt="Photo">
+                                        <img src="{{ asset($item->photo)}}" width='960' height='500'
+                                            clas="img img-responsive" />
                                     </div>
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                                 <br>
-                                <p>
-                                    <span class="float-right">
-                                        <a href="#" class="link-black text-sm" id="toggleComments">
-                                            <i class="far fa-comments mr-1"></i> Comments
-                                        </a>
-                                    </span>
-                                </p>
-
+                                <hr style="border-color: black;">
                                 <br>
-
-                                <!-- Comment Section -->
-                                <div id="commentsSection" style="display: none;">
-                                    <input class="form-control form-control-sm col-md-11" type="text"
-                                        placeholder="Type a comment">
-                                </div>
+                                @endforeach
                             </div>
                             <!-- /.post -->
                         </div>
@@ -85,7 +86,7 @@
 
                     <label>Photo</label><br>
                     <input type="file" name="photo" id="photo" class="form-control"><br>
-                    
+
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -161,4 +162,14 @@ document.getElementById("toggleComments").addEventListener("click", function(eve
     commentsSection.style.display = (commentsSection.style.display === "none") ? "block" : "none";
 });
 </script>
+
+<script>
+function confirmDelete() {
+    if (confirm('Are you sure you want to delete this post?')) {
+        // If user confirms, submit the form
+        document.getElementById('deleteForm').submit();
+    }
+}
+</script>
+
 @endsection

@@ -89,3 +89,5 @@ Route::get('/admins', [AdminUserController::class, 'index'])->name('admin.index'
 // post
 Route::resource("/post", PostController::class);
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
