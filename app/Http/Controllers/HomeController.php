@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth; 
 
 class HomeController extends Controller
@@ -31,4 +32,11 @@ class HomeController extends Controller
             }
         }
     }
+
+        public function showAdminHome()
+        {
+            $posts = Post::orderBy('created_at', 'desc')->get(); // Retrieve posts, adjust as per your needs
+        
+            return view('admin_dashboard.adminhome', compact('posts'));
+        }  
 }

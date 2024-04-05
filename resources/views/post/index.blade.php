@@ -36,17 +36,18 @@
 
                                             <div class="text-right">
                                                 <!-- Align content to the right -->
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="confirmDelete()">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="confirmDelete()"
+                                                    style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Delete</button>
                                             </div>
                                         </form>
                                     </span>
-                                    <p>{{$item->caption}}</p>
+                                    <strong>{{$item->title}}</strong>
+                                    <p style="white-space: pre-wrap;">{{$item->caption}}</p>
                                 </div>
                                 <!-- /.user-block -->
                                 <div class="row col-md-12">
                                     <div class="col-md-12">
-                                        <img src="{{ asset($item->photo)}}" width='960' height='500'
+                                        <img src="{{ asset($item->photo)}}" width='960' height='800'
                                             clas="img img-responsive" />
                                     </div>
                                     <!-- /.col -->
@@ -81,12 +82,14 @@
             <div class="modal-body">
                 <form action="{{ url('posts')}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
-                    <label>Caption</label><br>
-                    <input type="text" name="caption" id="caption" class="form-control"><br>
+                    <label for="caption">Title</label>
+                    <textarea name="title" id="title" class="form-control" required></textarea>
 
-                    <label>Photo</label><br>
-                    <input type="file" name="photo" id="photo" class="form-control"><br>
+                    <label for="caption">Caption </label><br>
+                    <textarea name="caption" id="caption" class="form-control" rows="7" required></textarea>
 
+                    <label for="photo">Photo </label>
+                    <input type="file" name="photo" id="photo" class="form-control" required><br>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -152,15 +155,6 @@ function bringPostToFront() {
 }
 
 document.getElementById("mainContent").addEventListener("click", bringPostToFront);
-</script>
-
-<script>
-// JavaScript to toggle comment section visibility
-document.getElementById("toggleComments").addEventListener("click", function(event) {
-    event.preventDefault();
-    var commentsSection = document.getElementById("commentsSection");
-    commentsSection.style.display = (commentsSection.style.display === "none") ? "block" : "none";
-});
 </script>
 
 <script>

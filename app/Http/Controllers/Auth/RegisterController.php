@@ -54,6 +54,6 @@ class RegisterController extends Controller
         $user->save();
 
         // You can customize the redirect path or response as needed
-        return redirect()->route('home')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
     }
 }

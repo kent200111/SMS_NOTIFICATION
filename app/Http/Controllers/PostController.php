@@ -16,6 +16,13 @@ class PostController extends Controller
         return view ('post.index')->with('posts',$posts);
     }
 
+    public function showAdminHome()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get(); // Retrieve posts, adjust as per your needs
+    
+        return view('admin_dashboard.adminhome', compact('posts'));
+    }   
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -53,7 +60,7 @@ class PostController extends Controller
             // Handle case where no file was uploaded
             return redirect()->back()->withInput()->withErrors(['photo' => 'No photo uploaded.']);
         }
-    }    
+    } 
 
     /**
      * Display the specified resource.

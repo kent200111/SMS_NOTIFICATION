@@ -27,8 +27,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'showAdminHome'])->name('admin.home');
 
 route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showAdminHome'])->name('admin.home');
 
 
 Route::middleware('auth',)->group(function () {
