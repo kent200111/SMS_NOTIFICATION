@@ -37,6 +37,6 @@ class DashboardController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get(); // Retrieve posts, adjust as per your needs
     
-        return view('admin_dashboard.adminhome', compact('posts'));
+        return view('home', compact('posts'));
     }  
 }

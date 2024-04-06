@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="display: flex; justify-content: center;">
         <div class="info">
             <a href="{{ route('profile.show') }}" class="d-block">
                 <i class="fas fa-user"></i>

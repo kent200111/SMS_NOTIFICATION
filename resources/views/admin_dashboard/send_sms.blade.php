@@ -6,7 +6,6 @@
 
 <section class="content">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -15,14 +14,17 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('admin.send.sms') }}" method="post">
+                            @csrf
                             <div class="form-group">
-                                <label>Sender Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Sender Name">
+                                <label>Admin Name</label>
+                                <input type="text" class="form-control" name="admin_name"
+                                    placeholder="Enter Sender Name">
                             </div>
                             <div class="form-group">
                                 <label>Message</label>
-                                <textarea class="form-control" rows="6" placeholder="Enter Message"></textarea>
+                                <textarea class="form-control" rows="6" name="message"
+                                    placeholder="Enter Message"></textarea>
                             </div>
                             <button type="submit" class="btn btn-success float-right">Submit</button>
                             <br><br>
@@ -34,22 +36,26 @@
             <!-- Add another card on the right side -->
             <div class="col-md-6">
                 <div class="card">
-                <div class="card-header">
+                    <div class="card-header">
                         <h3 class="card-title">Message History</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="12" placeholder="History"></textarea>
-                            </div>
-                            <br>
-                        </form>
+                    <div class="card-body" style="overflow-y: auto; max-height: 380px;">
+                        <div style="width: 100%;">
+                            <!-- Adjust width as necessary -->
+                            @foreach ($uniqueNotifications as $notification)
+                            <p>Admin Name: {{ $notification->admin_name }}</p>
+                            <p>Message: {{ $notification->message }}</p>
+                            <p>- Sent on: {{ $notification->created_at->format('Y-m-d') }}</p>
+                            <hr>
+                            @endforeach
+                        </div>
                     </div>
-                    <!-- /.card-body -->
                 </div>
+                <!-- /.card-body -->
             </div>
         </div>
+    </div>
     </div>
 </section>
 

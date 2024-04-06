@@ -22,7 +22,7 @@
                             <div class="post">
                                 @foreach($posts->reverse() as $item)
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="admin/dist/img/user6-128x128.jpg"
+                                    <img class="img-circle img-bordered-sm" src="{{ asset('images/ssc_logo.png') }}"
                                         alt="User Image">
                                     <span class="username">
                                         <a href="#">Supreme Student Council

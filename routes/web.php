@@ -7,6 +7,7 @@ use App\http\Controllers\FullCalendarController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SMSController;
 
 
 /*
@@ -64,6 +65,7 @@ Route::get('/post', function () {
     return view('admin_dashboard.post');
 })->name('admin.dashboard.post')->middleware(['auth','admin']);
 
+// calendar
 Route::get('/getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
 Route::post('/createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
 Route::post('/deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
@@ -93,3 +95,7 @@ Route::resource("/post", PostController::class);
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+// sms
+Route::get('/send_sms', [SMSController::class, 'showForm']);
+Route::post('/send_sms', [SMSController::class, 'sendSMS'])->name('admin.send.sms');

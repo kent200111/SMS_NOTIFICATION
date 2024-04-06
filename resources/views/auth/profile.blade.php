@@ -181,7 +181,7 @@
                             <!-- /.row -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                <button type="submit" class="btn btn-success">{{ __('Submit') }}</button>
                             </div>
                         </div>
                         <!-- /.card-body -->

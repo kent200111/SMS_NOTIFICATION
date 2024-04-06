@@ -110,7 +110,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Home </a>
+                    <a class="nav-link" href="post"> Home </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="getevent" target="_blank"> Events </a>
@@ -148,8 +148,11 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link">
-                <span class="brand-text font-weight-light" style="text-align:center;color:white;">SSC l CMU</span>
+            <a href="/" class="brand-link" style="display: flex; justify-content: center;">
+                <span class="brand-text font-weight-light" style="color:white;">
+                    <img src="{{ asset('images/ssc_logo.png') }}" alt="" style="width: 30px; height: auto;">
+                    SSC l CMU
+                </span>
             </a>
 
             @if(Auth::check())
@@ -163,7 +166,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class=" content-wrapper">
             @yield('content')
         </div>
         <!-- /.content-wrapper -->
