@@ -14,10 +14,19 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="post" class="nav-link">
+                <a href="dashboard" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         {{ __('Dashboard') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="post" class="nav-link">
+                    <i class="nav-icon far fa-image"></i>
+                    <p>
+                        {{ __('Posts') }}
                     </p>
                 </a>
             </li>

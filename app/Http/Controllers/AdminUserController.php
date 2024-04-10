@@ -32,7 +32,7 @@ class AdminUserController extends Controller
     {
         $input = $request->all();
         AdminUser::create($input);
-        return redirect()->route('adminusers.index')->with('flash_message', 'Admin User Added!');
+        return redirect()->route('admin.index')->with('flash_message', 'Admin User Added!');
     }
 
     /**

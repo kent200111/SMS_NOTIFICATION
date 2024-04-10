@@ -110,7 +110,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post"> Home </a>
+                    <a class="nav-link" href="dashboard"> Home </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="getevent" target="_blank"> Events </a>

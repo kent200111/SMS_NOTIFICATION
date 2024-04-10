@@ -85,10 +85,12 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 // admin
-Route::delete('adminusers/{id}', [AdminUserController::class, 'destroy'])->name('adminusers.destroy');
+Route::delete('adminusers/{id}', 'AdminUserController@destroy')->name('adminusers.destroy');
 Route::resource("/admins",AdminUserController::class);
 Route::get('/admins', [AdminUserController::class, 'index'])->name('admin.index');
-Route::get('admin/users', [AdminUserController::class, 'index'])->name('adminusers.index');
+Route::delete('adminusers/{id}', 'App\Http\Controllers\AdminUserController@destroy')->name('adminusers.destroy');
+
+
 
 // post
 Route::resource("/post", PostController::class);
