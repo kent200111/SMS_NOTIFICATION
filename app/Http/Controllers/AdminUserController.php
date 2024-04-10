@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AdminUser;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdminUserController extends Controller
 {
@@ -23,7 +22,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin.index');
+        return view('admin.create');
     }
 
     /**
@@ -33,55 +32,29 @@ class AdminUserController extends Controller
     {
         $input = $request->all();
         AdminUser::create($input);
-        return redirect('admins')->with('flash_message', 'Admin User Added! ');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return redirect()->route('adminusers.index')->with('flash_message', 'Admin User Added!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-
-     public function destroy($id)
-     {
-         try {
-             // Find the AdminUser record by its ID
-             $adminuser = AdminUser::findOrFail($id);
-     
-             // Delete the AdminUser record
-             $adminuser->delete();
-     
-             // Redirect back to the index page with a success message
-             return redirect()->route('admin.index')->with('success', 'Admin Account deleted successfully');
-         } catch (ModelNotFoundException $e) {
-             // Handle the case where the AdminUser with the given ID is not found
-             return redirect()->route('admin.index')->with('error', 'Admin Account not found');
-         } catch (\Exception $e) {
-             // Handle other exceptions
-             return redirect()->route('admin.index')->with('error', 'Failed to delete Admin Account');
-         }
-     }
-
+    public function destroy($id)
+    {
+        try {
+            // Find the AdminUser record by its ID
+            $adminuser = AdminUser::findOrFail($id);
+    
+            // Delete the AdminUser record
+            $adminuser->delete();
+    
+            // Redirect back to the index page with a success message
+            return redirect()->route('admin.index')->with('success', 'Admin Account deleted successfully');
+        } catch (ModelNotFoundException $e) {
+            // Handle the case where the AdminUser with the given ID is not found
+            return redirect()->route('admin.index')->with('error', 'Admin Account not found');
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            return redirect()->route('admin.index')->with('error', 'Failed to delete Admin Account');
+        }
+    }
 }

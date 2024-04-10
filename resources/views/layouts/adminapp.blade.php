@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-    <!-- Google Font: Source Sans Pro -->
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -49,6 +47,11 @@
     <link rel="stylesheet" href="admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="admin/plugins/fullcalendar/main.css">
+
+    <link rel="stylesheet" href="{{ asset('cssfile/chatbot.css') }}">
 
 
 
@@ -94,7 +97,6 @@
     });
     </script>
 
-
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -107,19 +109,21 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard"> Home </a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Events</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="getevent" target="_blank"> Events </a>
                 </li>
+
+
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->last_name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
                         <a href="{{ route('profile.show') }}" class="dropdown-item">
@@ -144,8 +148,11 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link">
-                <span class="brand-text font-weight-light" style="text-align:center;color:white;">SSC l CMU</span>
+            <a href="/" class="brand-link" style="display: flex; justify-content: center;">
+                <span class="brand-text font-weight-light" style="color:white;">
+                    <img src="{{ asset('images/ssc_logo.png') }}" alt="" style="width: 30px; height: auto;">
+                    SSC l CMU
+                </span>
             </a>
 
             @if(Auth::check())
@@ -155,10 +162,11 @@
             @include('layouts.navigation')
             @endif
             @endif
+
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class=" content-wrapper">
             @yield('content')
         </div>
         <!-- /.content-wrapper -->
@@ -257,6 +265,7 @@
     <script src="admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ asset('javascriptfile/chatbot.js') }}"></script>
 
     <script>
     $(function() {

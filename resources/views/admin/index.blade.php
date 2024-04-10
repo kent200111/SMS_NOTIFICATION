@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
 </head>
+<br>
 
 <!-- Main content -->
 <section class="content">
@@ -61,18 +62,19 @@
                             </thead>
                             @foreach($adminusers as $adminuser)
                             <tr>
-                                <td>{{ $adminuser->first_name }} {{ $adminuser->middle_name }} {{ $adminuser->last_name }}</td>
+                                <td>{{ $adminuser->first_name }} {{ $adminuser->middle_name }}
+                                    {{ $adminuser->last_name }}</td>
                                 <td>{{ $adminuser->id_number }}</td>
                                 <td>{{ $adminuser->college }}</td>
                                 <td>{{ $adminuser->gender }}</td>
                                 <td>{{ $adminuser->contact_number }}</td>
                                 <td style="text-align: center;">
-                                    <i class="fas fa-trash" style="color:red; font-size: 24px; cursor: pointer;"
-                                        onclick="confirmDelete('{{ $adminuser->id }}')"></i>
-                                    <form id="deleteForm" action="{{ route('adminusers.destroy', ['id' => $adminuser->id]) }}"
-                                        method="POST">
+                                    <form action="{{ route('adminusers.destroy', ['id' => $adminuser->id]) }}"
+                                        method="POST" id="deleteForm">
                                         @csrf
                                         @method('DELETE')
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="confirmDelete('{{ $adminuser->id }}')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -248,12 +250,13 @@ $(function() {
 
 <script>
 function confirmDelete(id) {
-    if (confirm("Are you sure you want to delete this record?")) {
+    if (confirm("Are you sure you want to delete this admin?")) {
         // If the user confirms, submit the form
         document.getElementById('deleteForm').submit();
     }
 }
 </script>
+
 
 
 

@@ -1,9 +1,12 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="display: flex; justify-content: center;">
         <div class="info">
-            <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="{{ route('profile.show') }}" class="d-block">
+                <i class="fas fa-user"></i>
+                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+            </a>
         </div>
     </div>
 
@@ -11,7 +14,7 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="dashboard" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         {{ __('Dashboard') }}
@@ -19,73 +22,14 @@
                 </a>
             </li>
 
-
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-file"></i>
+                <a href="getevent" class="nav-link" target="_blank">
+                    <i class="nav-icon fas fa-bell"></i>
                     <p>
-                        IMs
-                        <i class="fas fa-angle-left right"></i>
+                        Events
                     </p>
                 </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="manage_batches" class="nav-link">
-                            <i class="fas fa-copy"></i>
-                            <p>Batches</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="manage_masterlist" class="nav-link">
-                            <i class="fas fa-book"></i>
-                            <p>Masterlist</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-users"></i>
-                            <p>Authors</p>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a href="manage_categories" class="nav-link">
-                            <i class="fas fa-table"></i>
-                            <p>Categories</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-shopping-cart"></i>
-                    <p>
-                        Sales Management
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-tag"></i>
-                            <p>New Purchase</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-chart-pie mr-1"></i>
-                            <p>Generate Reports</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
 
             <!-- <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
