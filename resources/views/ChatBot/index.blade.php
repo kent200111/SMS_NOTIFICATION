@@ -118,7 +118,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update Query</button>
+                <button type="submit" class="btn btn-success">Update Query</button>
             </div>
             </form>
         </div>
@@ -210,6 +210,6 @@ function confirmDelete(id) {
         document.getElementById('deleteForm').submit();
     }
 }
-</script>
+</script>z
 
 @endsection

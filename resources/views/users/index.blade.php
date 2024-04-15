@@ -22,6 +22,7 @@
                                     <th>College</th>
                                     <th>Gender</th>
                                     <th>Contact Number</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,14 @@
                                     <td>{{ $user->college }}</td>
                                     <td>{{ $user->gender }}</td>
                                     <td>{{ $user->contact_number }}</td>
+                                    <td>
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -47,12 +56,6 @@
 
 <script>
 $(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
         "paging": true,
         "lengthChange": true,
@@ -64,7 +67,5 @@ $(function() {
     });
 });
 </script>
-
-
 
 @endsection

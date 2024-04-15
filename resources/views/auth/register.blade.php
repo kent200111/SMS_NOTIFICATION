@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Advanced form elements</title>
+    <title>Supreme Student Council</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -36,8 +36,10 @@
 </head>
 
 <body>
-
-    <br><br><br>
+    <br>
+    <div class="login-logo">
+        <a href="/" style="font-size: 30px;">{{ config('app.name', 'Laravel') }}</a>
+    </div>
 
     <section class="content">
         <div class="container-fluid" style="width: 800px;">
@@ -144,7 +146,8 @@
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block" style="background-color: #00491e;">Register</button>
+                                <button type="submit" class="btn btn-primary btn-block"
+                                    style="background-color: #00491e;">Register</button>
                             </div>
                             <!-- /.col -->
                         </div>

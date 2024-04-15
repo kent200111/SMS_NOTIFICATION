@@ -93,10 +93,14 @@
     <div class="modal fade" id="modal-xl">
         <div class="modal-dialog" style="max-width: 62%;">
             <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
                 <div class="modal-body">
                     <section class="content">
                         <div class="container-fluid" style="width: 800px;">
-
                             <div class="card card-primary">
                                 <div class="card-header" style="background-color: #00491e;">
                                     <h3 class="card-title">Add Admin Account</h3>

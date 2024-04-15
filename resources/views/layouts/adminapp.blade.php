@@ -156,7 +156,7 @@
             </a>
 
             @if(Auth::check())
-            @if(Auth::user()->usertype == 'admin')
+            @if(Auth::user()->usertype == 'admin' || Auth::user()->usertype == 'super_admin')
             @include('layouts.adminnavigation')
             @elseif(Auth::user()->usertype == 'user')
             @include('layouts.navigation')

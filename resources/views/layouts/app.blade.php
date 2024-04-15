@@ -55,6 +55,7 @@
 
 
 
+
     @yield('styles')
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -63,6 +64,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="admin/plugins/toastr/toastr.min.css">
 
     <style>
     table.table td a.view {
@@ -156,7 +161,7 @@
             </a>
 
             @if(Auth::check())
-            @if(Auth::user()->usertype == 'admin')
+            @if(Auth::user()->usertype == 'admin' || Auth::user()->usertype == 'super_admin')
             @include('layouts.adminnavigation')
             @elseif(Auth::user()->usertype == 'user')
             @include('layouts.navigation')
@@ -412,6 +417,11 @@
     }
     // DropzoneJS Demo Code End
     </script>
+
+    <script src="admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="admin/plugins/toastr/toastr.min.js"></script>
+
 </body>
 
 </html>

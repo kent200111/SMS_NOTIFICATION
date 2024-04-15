@@ -10,28 +10,21 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index()
-    {
+{
+    if (Auth::check()) {
+        $usertype = Auth::user()->usertype;
 
-        if(Auth::id())
-        {
-            $usertype=Auth()->user()->usertype;
-
-            if($usertype=='user')
-            {
-                return view('home');
-            }
-
-            else if($usertype== 'admin')
-            {
-                return view('admin_dashboard.adminhome');
-            }
-
-            else
-            {
-                return redirect()->back();
-            }
+        if ($usertype == 'user') {
+            return view('home');
+        } elseif ($usertype == 'admin' || $usertype == 'super_admin') {
+            return view('admin_dashboard.adminhome');
+        } else {
+            return redirect()->back();
         }
+    } else {
+        return redirect()->route('login'); // Redirect to login page if user is not authenticated
     }
+}
 
     public function showAdminHome()
     {

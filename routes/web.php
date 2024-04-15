@@ -93,11 +93,22 @@ Route::delete('adminusers/{id}', 'App\Http\Controllers\AdminUserController@destr
 
 
 // post
-Route::resource("/post", PostController::class);
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::resource("/post", PostController::class)->middleware(['auth','admin']);
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->middleware(['auth','admin']);
+Route::get('/posts', [PostController::class, 'store'])->name('posts.store')->middleware(['auth','admin']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware(['auth','admin']);
 
 // sms
 Route::get('/send_sms', [SMSController::class, 'showForm']);
 Route::post('/send_sms', [SMSController::class, 'sendSMS'])->name('admin.send.sms');
+
+// user delete
+Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
+
+Route::get('/landing-page', function () {
+    return view('landing_page.index');
+});
+
+Route::get('/calendar', function () {
+    return view('calendarsample');
+});

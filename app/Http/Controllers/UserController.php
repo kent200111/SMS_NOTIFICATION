@@ -20,4 +20,13 @@ public function indexAdmin()
     return view('admin.index', compact('users'));
 }
 
+public function destroy($id)
+{
+    $user = User::findOrFail($id);
+    $user->delete();
+
+    // Redirect back or to any other page after deletion
+    return redirect()->route('users.index')->with('success', 'User deleted successfully');
+}
+
 }
