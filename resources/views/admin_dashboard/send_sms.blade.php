@@ -43,7 +43,7 @@
                     <div class="card-body" style="overflow-y: auto; max-height: 380px;">
                         <div style="width: 100%;">
                             <!-- Adjust width as necessary -->
-                            @foreach ($uniqueNotifications as $notification)
+                            @foreach ($uniqueNotifications->reverse() as $notification)
                             <p>Admin Name: {{ $notification->admin_name }}</p>
                             <p>Message: {{ $notification->message }}</p>
                             <p>- Sent on: {{ $notification->created_at->format('Y-m-d') }}</p>

@@ -32,13 +32,11 @@
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
 </head>
-<br>
-
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-xl">
-            Add Admin Account
+            Add Account
         </button>
         <br> <br>
         <div class="row">

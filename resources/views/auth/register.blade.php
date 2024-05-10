@@ -93,9 +93,9 @@
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="gender">Gender</label>
+                                <label for="gender">Sex</label>
                                 <select class="form-control select2" name="gender" style="width: 100%;">
-                                    <option value="" selected disabled>Select Gender</option>
+                                    <option value="" selected disabled>Select Sex</option>
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
@@ -139,9 +139,10 @@
                     <div class="container">
                         <div class="row justify-content-end">
                             <div class="col-4">
-                                <div class="icheck-primary" required>
-                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                    <label for="agreeTerms">I agree to the <a href="#">terms</a></label>
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
+                                    <label for="agreeTerms">I agree to the <a
+                                            href="http://127.0.0.1:8000/#Aims" target="_blank">terms</a></label>
                                 </div>
                             </div>
                             <!-- /.col -->

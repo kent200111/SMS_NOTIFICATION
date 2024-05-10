@@ -23,13 +23,35 @@
             </li>
 
             <li class="nav-item">
-                <a href="getevent" class="nav-link" target="_blank">
+                <a href="getevent" class="nav-link">
                     <i class="nav-icon fas fa-bell"></i>
                     <p>
                         Events
                     </p>
                 </a>
             </li>
+
+            <br><br>
+
+            <li class="nav-item">
+                <a href="/delete-account" class="nav-link">
+                    <i class="nav-icon fas fa-user-slash"></i>
+                    <p>
+                        Delete My Account
+                    </p>
+                </a>
+            </li>
+
+            <!-- <br>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-slash"></i>
+                    <p>
+                        Delete My Account
+                    </p>
+                </a>
+            </li> -->
 
             <!-- <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">

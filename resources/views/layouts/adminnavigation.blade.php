@@ -33,7 +33,7 @@
 
 
             <li class="nav-item">
-                <a href="users" class="nav-link">
+                <a href="/deleteindex" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Accounts List
@@ -42,7 +42,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="getevent" class="nav-link" target="_blank">
+                <a href="getevent" class="nav-link">
                     <i class="nav-icon fas fa-bell"></i>
                     <p>
                         Events
@@ -73,6 +73,15 @@
                     <i class="nav-icon fas fa-comment"></i>
                     <p>
                         ChatBot Queries
+                    </p>
+                </a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a href="/users" class="nav-link">
+                    <i class="nav-icon fas fa-user-slash"></i>
+                    <p>
+                        Delete Requests
                     </p>
                 </a>
             </li>

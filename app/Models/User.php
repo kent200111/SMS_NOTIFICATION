@@ -27,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'contact_number',
         'email',
         'password',
+        'delete_request',
     ];
 
     /**

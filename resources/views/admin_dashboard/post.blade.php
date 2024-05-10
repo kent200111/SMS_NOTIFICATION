@@ -113,7 +113,7 @@
 </div>
 
 <!-- Chatbot Interface -->
-<div class="chatbot-container" id="chatbotContainer">
+<div class="chatbot-container" id="chatbotContainer" style="width: 270px;">
     <div class="chatbot-header">
         <h2>Chatbot</h2>
     </div>

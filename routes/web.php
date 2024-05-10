@@ -8,6 +8,7 @@ use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SMSController;
+use App\Http\Controllers\QueryController;
 
 
 /*
@@ -25,13 +26,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'verify' => true
+]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'showAdminHome'])->name('admin.home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']) ->middleware(['auth', 'verified'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'showAdminHome'])->middleware('verified')->name('admin.home');
 
-route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth')->name('dashboard');
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showAdminHome'])->name('admin.home');
+route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth','verified')->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showAdminHome'])->middleware('verified')->name('admin.home');
 
 
 Route::middleware('auth',)->group(function () {
@@ -66,9 +69,9 @@ Route::get('/post', function () {
 })->name('admin.dashboard.post')->middleware(['auth','admin']);
 
 // calendar
-Route::get('/getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
-Route::post('/createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
-Route::post('/deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
+Route::get('/getevent', [\App\Http\Controllers\FullCalendarController::class, 'getEvent'])->name('getevent');
+Route::post('/createevent', [\App\Http\Controllers\FullCalendarController::class, 'createEvent'])->name('createevent');
+Route::post('/deleteevent', [\App\Http\Controllers\FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
 
 Route::post('/chatbot/get-response', [ChatBotController::class, 'getResponse']);
 Route::post('/chatbot/respond', [ChatBotController::class, 'respond']);
@@ -111,4 +114,19 @@ Route::get('/landing-page', function () {
 
 Route::get('/calendar', function () {
     return view('calendarsample');
+});
+
+// Request delete
+Route::post('/delete-account', 'App\Http\Controllers\UserController@submitDeleteAccount')->name('delete.account.submit');
+Route::get('/delete-account', 'App\Http\Controllers\UserController@showDeleteAccountForm')->name('delete.account');
+Route::view('/after-delete', 'users.after_delete')->name('after.delete');
+Route::get('/deleteindex', 'App\Http\Controllers\UserController@deleteindex')->name('users.deleteindex');
+
+
+Route::get('/submit-query', [App\Http\Controllers\QueryController::class, 'showQueryForm'])->name('show.query.form');
+Route::post('/submit-query', [App\Http\Controllers\QueryController::class, 'submitQuery'])->name('submit.query');
+
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/queries', [QueryController::class, 'showQueries'])->name('admin.query_management');
+    Route::post('/admin/reply-query/{id}', [App\Http\Controllers\QueryController::class, 'replyQuery'])->name('admin.reply.query');
 });

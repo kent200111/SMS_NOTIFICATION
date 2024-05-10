@@ -118,7 +118,7 @@
                     <a class="nav-link" href="dashboard"> Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="getevent" target="_blank"> Events </a>
+                    <a class="nav-link" href="getevent"> Events </a>
                 </li>
 
 

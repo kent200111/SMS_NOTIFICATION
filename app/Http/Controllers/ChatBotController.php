@@ -42,7 +42,7 @@ class ChatBotController extends Controller
     {
         $faqs = ChatBot::orderBy('created_at', 'desc')->get();
 
-        return view('chatbot.index')->with('faqs', $faqs);
+        return view('ChatBot.index')->with('faqs', $faqs);
     }
 
     /**

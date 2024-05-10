@@ -117,7 +117,7 @@
     }
 
     img {
-        max-width: 20%;
+        max-width: 40%;
         /* Set maximum width to 50% of the container */
         height: auto;
         /* Maintain aspect ratio */
@@ -133,7 +133,7 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <img src="{{ asset('images/ssc_logo.png')}}" alt="">
+        <img src="{{ asset('images/sms_logo.png')}}" alt="">
         <div class="login-logo">
             <a href="/" style="font-size: 30px;">{{ config('app.name', 'Laravel') }}</a>
         </div>

@@ -20,9 +20,9 @@
                         <div class="active tab-pane" id="activity">
                             <!-- Post -->
                             <div class="post">
-                                @foreach($posts->reverse() as $item)
+                                @foreach($posts as $item)
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="{{ asset('images/ssc_logo.png') }}"
+                                    <img class="img-circle img-bordered-sm" src="{{ asset('images/sms_logo.png') }}"
                                         alt="User Image">
                                     <span class="username">
                                         <a href="#">Supreme Student Council
@@ -66,7 +66,7 @@
 </div>
 
 <!-- Chatbot Interface -->
-<div class="chatbot-container" id="chatbotContainer">
+<div class="chatbot-container" id="chatbotContainer" style="width: 270px;">
     <div class="chatbot-header">
         <h2>Chatbot</h2>
     </div>

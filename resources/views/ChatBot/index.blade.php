@@ -210,6 +210,6 @@ function confirmDelete(id) {
         document.getElementById('deleteForm').submit();
     }
 }
-</script>z
+</script>
 
 @endsection
