@@ -86,8 +86,19 @@
                     <textarea name="title" id="title" class="form-control" required></textarea>
 
                     <label for="caption">Caption </label><br>
-                    <textarea name="caption" id="caption" class="form-control" rows="7" required></textarea>
-
+                    <textarea name="caption" id="caption" class="form-control" rows="5" required></textarea>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Start</label>
+                                <input type="date" name="start" class="form-control" placeholder=".col-3">
+                            </div>
+                            <div class="col-6">
+                                <label for="">End</label>
+                                <input type="date" name="end" class="form-control" placeholder=".col-4">
+                            </div>
+                        </div>
+                    </div>
                     <label for="photo">Photo </label>
                     <input type="file" name="photo" id="photo" class="form-control" required><br>
             </div>
