@@ -19,7 +19,8 @@
                             <div class="form-group">
                                 <label>Admin Name</label>
                                 <input type="text" class="form-control" name="admin_name"
-                                    placeholder="Enter Sender Name">
+                                    value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"
+                                    placeholder="Enter Sender Name" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Message</label>
