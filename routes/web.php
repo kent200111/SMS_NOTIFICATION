@@ -127,6 +127,11 @@ Route::get('/submit-query', [App\Http\Controllers\QueryController::class, 'showQ
 Route::post('/submit-query', [App\Http\Controllers\QueryController::class, 'submitQuery'])->name('submit.query');
 
 Route::middleware('admin')->group(function () {
-    Route::get('/admin/queries', [QueryController::class, 'showQueries'])->name('admin.query_management');
+    Route::get('/admin/queries', [App\Http\Controllers\QueryController::class, 'showQueries'])->name('admin.query_management');
     Route::post('/admin/reply-query/{id}', [App\Http\Controllers\QueryController::class, 'replyQuery'])->name('admin.reply.query');
+    Route::get('/get-query-details/{queryId}', 'QueryController@getQueryDetails');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/submit-query', [App\Http\Controllers\QueryController::class, 'showUserQueries'])->name('users.query_submission');
 });

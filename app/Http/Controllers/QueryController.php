@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Query; // Import the Query model
+use App\Models\Query;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -31,22 +31,36 @@ class QueryController extends Controller
 
     public function showQueries()
     {
-        
         try {
-            // Get queries submitted by users with usertype 'user'
             $queries = Query::with('user')
-                ->whereHas('user', function ($query) {
-                    $query->where('usertype', 'user');
-                })
-                ->whereNotNull('admin_id')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
 
             return view('admin.query_management', compact('queries'));
         } catch (ModelNotFoundException $e) {
-            // Handle exception, e.g., log error, display error message, etc.
             return response()->view('errors.404', [], 404);
         }
+    }
+
+    public function getQueryDetails($queryId)
+    {
+        $query = Query::findOrFail($queryId);
+        return view('admin.query_details', compact('query'));
+    }
+
+    public function showUserQueries()
+    {
+        // Retrieve the currently authenticated user
+        $user = Auth::user();
+    
+        // Retrieve queries belonging to the current user
+        $queries = Query::with('user')
+                        ->where('user_id', $user->id)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+    
+        // Pass the filtered queries to the view
+        return view('users.query_submission', compact('queries'));
     }
 
     public function replyQuery(Request $request, $id)
