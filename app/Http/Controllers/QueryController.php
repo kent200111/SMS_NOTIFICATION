@@ -48,6 +48,12 @@ class QueryController extends Controller
         return view('admin.query_details', compact('query'));
     }
 
+    // public function badgeQueries()
+    // {
+    //     $unrepliedCount = Query::whereNull('reply_text')->count();
+    //     return view('admin_dashboard.adminhome', compact('unrepliedCount'));
+    // }
+
     public function showUserQueries()
     {
         // Retrieve the currently authenticated user

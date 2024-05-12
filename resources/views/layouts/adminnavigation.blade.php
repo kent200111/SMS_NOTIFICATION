@@ -76,6 +76,16 @@
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="admin/queries" class="nav-link">
+                    <i class="nav-icon fas fa-question-circle"></i>
+                    <p>
+                        Manage Queries
+                    </p>
+                </a>
+            </li>
+
             <br>
             <li class="nav-item">
                 <a href="/users" class="nav-link">
