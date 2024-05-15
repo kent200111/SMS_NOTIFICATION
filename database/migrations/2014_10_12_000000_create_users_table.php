@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Validation\Rules\Unique;
+
 return new class extends Migration
 {
     /**
@@ -27,7 +29,19 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-        });        
+        });   
+
+        // Add custom validation rule to restrict email extension
+        \Validator::extend('cmu_email', function ($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[^@]+@cmu\.edu\.ph$/', $value);
+        });
+
+        // Add unique constraint with custom validation rule for email column
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('email')->unique()->change();
+            $table->dropUnique(['email']); // Drop existing unique constraint
+            $table->unique('email', 'unique_email_cmu');
+        });
     }
 
     /**

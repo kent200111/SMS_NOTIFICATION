@@ -106,7 +106,7 @@
                         <hr style="border: 1px solid #808080;">
                         <div class="row">
                             <div class="col-6">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="exampleInputEmail1">Email address (Use Institutional Email)</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" name="email"
                                     placeholder="Enter email">
                             </div>
@@ -138,11 +138,14 @@
                     <!-- /.card-body -->
                     <div class="container">
                         <div class="row justify-content-end">
+                            <div>
+                                <a href="login">Already have an account</a>
+                            </div>
                             <div class="col-4">
                                 <div class="icheck-primary">
                                     <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
-                                    <label for="agreeTerms">I agree to the <a
-                                            href="http://127.0.0.1:8000/#Aims" target="_blank">terms</a></label>
+                                    <label for="agreeTerms">I agree to the <a href="http://127.0.0.1:8000/#Aims"
+                                            target="_blank">terms</a></label>
                                 </div>
                             </div>
                             <!-- /.col -->
@@ -161,7 +164,38 @@
     </section>
     <!-- /.card -->
 
+    <!-- Modal warning -->
+    @if(Session::has('emailWarning'))
+    <div class="modal fade" id="emailWarningModal" tabindex="-1" role="dialog" aria-labelledby="emailWarningModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailWarningModalLabel">Invalid Email Address</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ Session::get('emailWarning') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @if(Session::has('emailWarning'))
+    <script>
+    $(document).ready(function() {
+        $('#emailWarningModal').modal('show');
+    });
+    </script>
+    @endif
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>

@@ -270,6 +270,7 @@
             <p class="description">Explore, Connect, Experience: Your Ultimate Events Destination</p>
             <a href="{{ route('login') }}" class="btn">Login</a>
             <a href="{{ route('register') }}" class="btn" style="Background-color: #919f02">Sign Up</a>
+            <a href="{{ route('getevent') }}" class="btn">Calendar</a>
         </div>
         <img src="{{ asset('images/sms_logo.png')}}" data-speed="-3" class="move"
             style="max-width: 250px; height: auto;">

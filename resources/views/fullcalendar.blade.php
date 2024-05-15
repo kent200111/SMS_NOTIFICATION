@@ -39,14 +39,20 @@
 
 <script>
     $(document).ready(function () {
-        var calendar = $('#calendar').fullCalendar({
+        @auth
+            var userType = "{{ Auth::user()->usertype }}"; // Assuming you have access to the user type
+        @else
+            var userType = ""; // User is not authenticated
+        @endauth
+
+        var calendarOptions = {
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
             navLinks: true,
-            editable: true,
+            editable: userType === 'admin' || userType === 'super_admin', // Enable editability based on user type
             events: "getevent",
             displayEventTime: false,
             eventRender: function (event, element, view) {
@@ -56,9 +62,12 @@
                     event.allDay = false;
                 }
             },
-            selectable: true,
+            selectable: userType === 'admin' || userType === 'super_admin', // Enable selection based on user type
             selectHelper: true,
             select: function (start, end, allDay) {
+                if (userType !== 'admin' && userType !== 'super_admin') {
+                    return; // Prevent event creation for non-admin users
+                }
                 var title = prompt('Event Title:');
                 if (title) {
                     var start = moment(start, 'DD.MM.YYYY').format('YYYY-MM-DD');
@@ -84,6 +93,9 @@
                 }
             },
             eventClick: function (event) {
+                if (userType !== 'admin' && userType !== 'super_admin') {
+                    return; // Prevent event deletion for non-admin users
+                }
                 var deleteMsg = confirm("Do you really want to delete?");
                 if (deleteMsg) {
                     $.ajax({
@@ -109,7 +121,9 @@
             },
             eventColor: '#00491E', // Change event color to blue
             eventTextColor: 'white' // Change event text color to white
-        });
+        };
+
+        $('#calendar').fullCalendar(calendarOptions);
     });
 </script>
 
