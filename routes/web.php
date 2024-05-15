@@ -104,6 +104,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 // sms
 Route::get('/send_sms', [SMSController::class, 'showForm']);
 Route::post('/send_sms', [SMSController::class, 'sendSMS'])->name('admin.send.sms');
+Route::post('/send-caption-sms', [SMSController::class, 'captionSMS'])->name('send.caption.sms');
 
 // user delete
 Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');

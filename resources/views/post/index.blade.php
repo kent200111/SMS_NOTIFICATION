@@ -100,7 +100,17 @@
                         </div>
                     </div>
                     <label for="photo">Photo </label>
-                    <input type="file" name="photo" id="photo" class="form-control" required><br>
+                    <input type="file" name="photo" id="photo" class="form-control" required>
+                    <br>
+                    <input type="text" name="send_sms" id="send_sms_hidden" value="0"> <!-- Default value is 0 -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="send_sms_checkbox" id="send_sms_checkbox"
+                            style="margin-right: 5px;">
+                        <label class="form-check-label" for="send_sms_checkbox" style="font-weight: bold;">
+                            Send caption via SMS
+                        </label>
+                    </div>
+                    <br>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -175,6 +185,24 @@ function confirmDelete() {
         document.getElementById('deleteForm').submit();
     }
 }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var checkbox = document.getElementById('send_sms_checkbox');
+    var hiddenInput = document.getElementById('send_sms_hidden');
+
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            hiddenInput.value = '1';
+        } else {
+            hiddenInput.value = '0';
+        }
+    });
+
+    // Trigger the change event on page load to initialize the value
+    checkbox.dispatchEvent(new Event('change'));
+});
 </script>
 
 @endsection

@@ -18,7 +18,7 @@
         <a href="/dashboard" class="btn btn-primary" style="background-color: #00491E">Back to Dashboard</a>
         <br><br>
         <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color: #FFC600; padding: 20px; font-size: 20px;">
+            <div class="panel-heading" style="background-color: #FFC600; padding: 20px; font-size: 20px; color: black;">
                 Central Mindanao University Calendar Of Events
             </div>
             <div class="panel-body">

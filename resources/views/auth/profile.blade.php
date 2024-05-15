@@ -27,6 +27,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <!-- Left side fields -->
+                                    <label for="">First Name</label>
                                     <div class="input-group mb-3">
                                         <input type="text" name="first_name"
                                             class="form-control @error('first_name') is-invalid @enderror"
@@ -38,6 +39,7 @@
                                         </span>
                                         @enderror
                                     </div>
+                                    <label for="">Middle Name(Optional)</label>
                                     <div class="input-group mb-3">
                                         <input type="text" name="middle_name"
                                             class="form-control @error('middle_name') is-invalid @enderror"
@@ -49,6 +51,7 @@
                                         </span>
                                         @enderror
                                     </div>
+                                    <label for="">Last Name</label>
                                     <div class="input-group mb-3">
                                         <input type="text" name="last_name"
                                             class="form-control @error('last_name') is-invalid @enderror"
@@ -60,7 +63,7 @@
                                         </span>
                                         @enderror
                                     </div>
-
+                                    <label for="">Email</label>
                                     <div class="input-group mb-3">
                                         <input type="email" name="email"
                                             class="form-control @error('email') is-invalid @enderror"
@@ -72,7 +75,7 @@
                                         </span>
                                         @enderror
                                     </div>
-
+                                    <label for="">Id Number</label>
                                     <div class="input-group mb-3">
                                         <input type="id_number" name="id_number"
                                             class="form-control @error('id_number') is-invalid @enderror"
@@ -87,6 +90,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Right side fields -->
+                                    <label for="">Contact Number</label>
                                     <div class="input-group mb-3">
                                         <input type="text" name="contact_number"
                                             class="form-control @error('contact_number') is-invalid @enderror"
@@ -99,6 +103,7 @@
                                         </span>
                                         @enderror
                                     </div>
+                                    <label for="">College</label>
                                     <div class="input-group mb-3">
                                         <select name="college"
                                             class="form-control @error('college') is-invalid @enderror" required>
@@ -140,7 +145,7 @@
                                         </span>
                                         @enderror
                                     </div>
-
+                                    <label for="">Gender</label>
                                     <div class="input-group mb-3">
                                         <select name="gender" class="form-control @error('gender') is-invalid @enderror"
                                             required>
@@ -158,7 +163,7 @@
                                         </span>
                                         @enderror
                                     </div>
-
+                                    <label for="">Password</label>
                                     <div class="input-group mb-3">
                                         <input type="password" name="password"
                                             class="form-control @error('password') is-invalid @enderror"
@@ -169,6 +174,7 @@
                                         </span>
                                         @enderror
                                     </div>
+                                    <label for="">Re-Enter Password</label>
                                     <div class="input-group mb-3">
                                         <input type="password" name="password_confirmation"
                                             class="form-control @error('password_confirmation') is-invalid @enderror"
