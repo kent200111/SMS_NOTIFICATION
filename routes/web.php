@@ -37,7 +37,7 @@ route::get('/dashboard',[DashboardController:: class,'index'])->middleware('auth
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showAdminHome'])->middleware('verified')->name('admin.home');
 
 
-Route::middleware('auth',)->group(function () {
+Route::middleware('auth','verified')->group(function () {
     Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
@@ -50,23 +50,23 @@ Route::view('/sample', 'sample.sample');
 
 Route::get('/manage_account', function () {
     return view('admin_dashboard.manage_acc');
-})->name('admin.dashboard.manage_account')->middleware(['auth','admin']);
+})->name('admin.dashboard.manage_account')->middleware(['auth','admin', 'verified']);
 
 Route::get('/manage_admin_account', function () {
     return view('admin_dashboard.manage_admin_acc');
-})->name('admin.dashboard.manage_admin_account')->middleware(['auth','admin']);
+})->name('admin.dashboard.manage_admin_account')->middleware(['auth','admin', 'verified']);
 
 Route::get('/send_sms', function () {
     return view('admin_dashboard.send_sms');
-})->name('admin.dashboard.send_sms')->middleware(['auth','admin']);
+})->name('admin.dashboard.send_sms')->middleware(['auth','admin', 'verified']);
 
 Route::get('/calendar', function () {
     return view('admin_dashboard.calendar');
-})->name('admin.dashboard.calendar')->middleware(['auth','admin']);
+})->name('admin.dashboard.calendar')->middleware(['auth','admin', 'verified']);
 
 Route::get('/post', function () {
     return view('admin_dashboard.post');
-})->name('admin.dashboard.post')->middleware(['auth','admin']);
+})->name('admin.dashboard.post')->middleware(['auth','admin', 'verified']);
 
 // calendar
 Route::get('/getevent', [\App\Http\Controllers\FullCalendarController::class, 'getEvent'])->name('getevent');

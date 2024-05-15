@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('id_number');
             $table->string('college');
             $table->string('gender');
-            $table->string('contact_number');
+            $table->int('contact_number');
             $table->string('email')->unique();
             $table->string('usertype')->default('user');
             $table->boolean('delete_request')->default(false);
